@@ -18,7 +18,6 @@ export const GlobalStyle = createGlobalStyle`
         --green-50: #4CAF50;
         //lose
         --red-100: #ff4545;
-
         //border
         --gray-100: #333;
     }
@@ -30,6 +29,26 @@ export const GlobalStyle = createGlobalStyle`
     button {
         cursor: pointer;
         font-family: "Poppins", sans-serif;
+    }
+
+    .react-modal-overlay{
+        position: fixed;
+        background: gray;
+        height: 50vh;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+    }
+
+    .react-modal-content{
+        position: fixed;
+        z-index: 1000;
+        background: black;
+        height: 50vh;
+        margin: 0 auto;
     }
 
 `

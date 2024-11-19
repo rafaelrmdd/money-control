@@ -7,7 +7,7 @@ export const Container = styled.button`
     line-height: 1rem;
     border-radius: 5px;
     border: none;
-    background: var(--green-50);
+    background: ${(props) => props.type === 'gain' ? 'var(--green-50)' : 'var(--red-100)'};
 
 
     &:hover{

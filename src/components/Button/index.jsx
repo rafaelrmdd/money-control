@@ -1,8 +1,9 @@
 import { Container } from './styles'
 
-export const Button = (type) => {
+export const Button = ({type,  openAddGainModal }) => {
+
     return (
-        <Container>
+        <Container type={type} onClick={openAddGainModal}>
             teste
         </Container>
     )

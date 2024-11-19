@@ -1,7 +1,8 @@
-import { Button } from '../Button';
-import { Container } from './styles';
+import { Container, ModalStyle, Button } from './styles';
+import Modal from 'react-modal'
 
-export const Header = () => {
+export const Header = ({openAddGainModal}) => {
+
     return (
         <Container>
             <header>
@@ -9,9 +10,10 @@ export const Header = () => {
                     <span>Logo</span>
                 </nav>
             </header>
+
             <section>
-                <Button type='gain'/>
-                <Button type='lose'/>
+                <Button type='gain' onClick={openAddGainModal}>teste</Button>
+                <Button type='loss' onClick={openAddGainModal}>teste</Button>
             </section>
             
         </Container>

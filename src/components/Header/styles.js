@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
@@ -32,9 +32,27 @@ export const Container = styled.div`
         justify-content: space-between;
         margin: 1rem auto 0 auto;
 
-        button{
-            
-            
-        }
+        
     }
+
+`
+
+export const Button = styled.button`
+  
+    width: 40%;
+    padding: 1rem;
+    line-height: 1rem;
+    border-radius: 5px;
+    border: none;
+    background: ${(props) => props.type === 'gain' ? 'var(--green-50)' : 'var(--red-100)'};
+
+    &:hover{
+        
+        filter: brightness(90%);
+    }
+
+`
+
+export const ModalStyle = createGlobalStyle`
+    
 `
