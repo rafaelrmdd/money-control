@@ -26,29 +26,36 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Poppins", sans-serif;
     }
 
-    button {
-        cursor: pointer;
+    input, button{
         font-family: "Poppins", sans-serif;
     }
 
+    button {
+        cursor: pointer;
+    }
+
     .react-modal-overlay{
+        background: rgba(0, 0, 0, 0.5);
+
         position: fixed;
-        background: gray;
-        height: 50vh;
-        width: 100%;
         top: 0;
-        right: 0;
         bottom: 0;
         left: 0;
+        right: 0;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .react-modal-content{
-        position: fixed;
-        z-index: 1000;
-        background: black;
-        height: 50vh;
-        margin: 0 auto;
+        width: 100%;
+        max-width: 600px;
+        background: var(--peach-100);
+        padding: 3rem;
+        position: relative;
+        border-radius: 4px;
+        
     }
 
 `

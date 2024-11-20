@@ -3,32 +3,32 @@ import { GlobalStyle } from './globalStyles';
 import { Content } from './components/Content/index'  
 import Modal from 'react-modal'
 import { useState } from 'react';
-import { AddGainModal } from './components/AddGainModal';
+import { AddTransactionModal } from './components/AddTransactionModal';
 
 
 
 function App() {
 
   Modal.setAppElement('#root');
-  const [isAddGainModalOpen, setIsAddGainModalOpen] = useState(false)
+  const [isAddTransactionModalOpen, setIsAddTransactionOpen] = useState(false)
 
-  const openAddGainModal = () => {
-    setIsAddGainModalOpen(true);
+  const openAddTransactionModal = () => {
+    setIsAddTransactionOpen(true);
   }
 
-  const closeAddGainModal = () => {
-    setIsAddGainModalOpen(false);
+  const closeAddTransactionModal = () => {
+    setIsAddTransactionOpen(false);
   }
 
   return (
     <div className="App">
       <GlobalStyle />
 
-      <Header openAddGainModal={openAddGainModal}/>
+      <Header openAddTransactionModal={openAddTransactionModal}/>
       <Content />
-      <AddGainModal 
-        isAddGainModalOpen={isAddGainModalOpen}
-        closeAddGainModal={closeAddGainModal}
+      <AddTransactionModal 
+        isAddTransactionModalOpen={isAddTransactionModalOpen}
+        closeAddTransactionModal={closeAddTransactionModal}
       />
       
     </div>

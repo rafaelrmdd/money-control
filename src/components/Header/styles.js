@@ -2,12 +2,12 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
-    height: 8rem;
+    height: 6rem;
 
     background: var(--yellow-200);
 
     header{
-        width: calc(70% + 2rem);
+        width: calc(25%);
         height: 3rem;
         margin: 0 auto;
         padding: 0 1rem;
@@ -20,7 +20,25 @@ export const Container = styled.div`
 
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+
+            span, .vertical-line, button{
+                margin-bottom: -10px;
+            }
+            
+            .vertical-line{
+                width: 5px;
+                height: 75%;
+            
+                border-left: 1px solid var(--gray-100);
+                filter: blur(0.8px);
+            }
+
+            button{
+                padding: 0.25rem;
+                border-radius: 4px;
+                
+            }
 
         }
     }

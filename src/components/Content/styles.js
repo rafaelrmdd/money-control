@@ -16,7 +16,9 @@ export const Container = styled.div`
         background: var(--orange-100);
 
         .gain, .lose{
-            padding: 2rem 1rem;
+            padding: 1rem 1rem;
+            line-height: 1rem;
+            display: flex;
         }
 
         .gain{
@@ -41,6 +43,27 @@ export const Container = styled.div`
             &:last-child{
                 margin-bottom: 0;
             }
+        }
+
+        .text{
+            width: 50%;
+
+            #name-text{
+                margin-bottom: 1rem;
+                font-weight: 700;
+            }
+
+            #reason-text{
+                font-weight: 500;
+                
+            }
+        }
+
+        .value{
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 `

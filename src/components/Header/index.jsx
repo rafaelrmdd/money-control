@@ -1,20 +1,22 @@
-import { Container, ModalStyle, Button } from './styles';
-import Modal from 'react-modal'
+import { Container,Button } from './styles';
 
-export const Header = ({openAddGainModal}) => {
-
+export const Header = ({openAddTransactionModal}) => {
     return (
         <Container>
             <header>
                 <nav>
                     <span>Logo</span>
+
+                    <div className="vertical-line"></div>
+                    
+                    <button onClick={openAddTransactionModal}>Add transaction</button>
                 </nav>
             </header>
 
-            <section>
-                <Button type='gain' onClick={openAddGainModal}>teste</Button>
-                <Button type='loss' onClick={openAddGainModal}>teste</Button>
-            </section>
+        
+                {/* <Button type='gain' onClick={openAddTransactionModal}>teste</Button>
+                <Button type='loss' onClick={openAddTransactionModal}>teste</Button> */}
+            
             
         </Container>
     )
