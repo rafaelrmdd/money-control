@@ -17,8 +17,25 @@ export const Container = styled.form`
         padding: 1rem;
     }
 
-    button{
+    button:last-child{
         width: 100%;
         height: 3rem;
+    }
+
+    .gain-or-loss{
+        display: flex;
+        margin-bottom: 1rem;
+        justify-content: space-between;
+
+        button{
+            width: 45%;
+        }
+    }
+
+    #value-error-message{
+        color: red;
+        position: relative;
+        top: -18px;
+        font-size: 12px ;
     }
 `

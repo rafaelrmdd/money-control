@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    height: calc(100vh - 6rem);
+    min-height: calc(100vh - 6rem);
     background: var(--yellow-200);
 
     main{
@@ -15,7 +15,7 @@ export const Container = styled.div`
 
         background: var(--orange-100);
 
-        .gain, .lose{
+        .gain, .loss{
             padding: 1rem 1rem;
             line-height: 1rem;
             display: flex;
@@ -33,7 +33,7 @@ export const Container = styled.div`
             }
         }
 
-        .lose{
+        .loss{
             background: var(--red-100);
             filter: brightness(90%);
 
