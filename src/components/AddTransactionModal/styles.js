@@ -27,8 +27,24 @@ export const Container = styled.form`
         margin-bottom: 1rem;
         justify-content: space-between;
 
-        button{
+        div{
             width: 45%;
+            text-align: center;
+            transition: 0.5s;
+        
+
+            &:first-child{
+                background: var(--green-50);
+            }
+
+            &:last-child{
+                background: var(--red-100);
+            }
+
+            &:hover{
+                cursor: pointer;
+                filter: brightness(90%);
+            }
         }
     }
 

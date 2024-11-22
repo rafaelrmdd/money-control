@@ -4,33 +4,35 @@ import { Content } from './components/Content/index'
 import Modal from 'react-modal'
 import { useState } from 'react';
 import { AddTransactionModal } from './components/AddTransactionModal';
+import { createContext } from 'react';
 
-
+export const TransactionContext = createContext()
 
 function App() {
-
   Modal.setAppElement('#root');
   const [isAddTransactionModalOpen, setIsAddTransactionOpen] = useState(false)
 
-  const openAddTransactionModal = () => {
-    setIsAddTransactionOpen(true);
-  }
+  const openAddTransactionModal = () => setIsAddTransactionOpen(true);
+  const closeAddTransactionModal = () => setIsAddTransactionOpen(false);
 
-  const closeAddTransactionModal = () => {
-    setIsAddTransactionOpen(false);
-  }
+  const [formData, setFormData] = useState({})
+  const [transactions, setTransactions] = useState([]);
+  const [error, setError] = useState(null);
 
   return (
     <div className="App">
-      <GlobalStyle />
-
-      <Header openAddTransactionModal={openAddTransactionModal}/>
-      <Content />
-      <AddTransactionModal 
-        isAddTransactionModalOpen={isAddTransactionModalOpen}
-        closeAddTransactionModal={closeAddTransactionModal}
-      />
-      
+      <TransactionContext.Provider 
+        value={{formData, setFormData, transactions, setTransactions, error, setError}}
+      >
+        <GlobalStyle />
+        <Header openAddTransactionModal={openAddTransactionModal} />
+        <Content transactions={transactions}/>
+        <AddTransactionModal 
+          isAddTransactionModalOpen={isAddTransactionModalOpen}
+          closeAddTransactionModal={closeAddTransactionModal}
+          formData={formData}
+        />
+      </TransactionContext.Provider>
     </div>
   );
 }

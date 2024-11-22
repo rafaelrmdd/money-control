@@ -1,31 +1,10 @@
-import { Container } from './styles'
-import { useState, useEffect } from 'react'
-import { supabase } from '../../api/transactions';
+import { Container } from './styles';
+import { useState, useEffect, useContext } from 'react';
+import { TransactionContext } from '../../App';
 
-export const Content = () => {
-    const [transactions, setTransactions] = useState([]);
+export const Content = ({ formData, transactions}) => {
+    const { setTransactions } = useContext(TransactionContext);
     const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchTransactionsData = async () => {
-            let { data, error} = await supabase
-                .from('transactions')
-                .select('*')
-            
-            if(error){
-                setError(error)
-                console.log(error)
-            }
-
-            if(transactions){
-                setTransactions(data)
-                console.log(transactions)
-            }
-        }
-
-        fetchTransactionsData()
-    }, [transactions])
-
 
     return(
         <Container>
@@ -53,7 +32,7 @@ export const Content = () => {
                 </div>
 
                 {transactions.map((transaction) => (
-                    <div className={transaction.type === true ? 'gain' : 'loss'}>
+                    <div key={transaction.id} className={transaction.type === true ? 'gain' : 'loss'}>
                         <div className="text">
                             <h2 id='name-text'>{transaction.name}</h2>
                             <h3 id='reason-text'>{transaction.reason}</h3>
