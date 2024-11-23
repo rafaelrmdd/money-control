@@ -1,4 +1,4 @@
-import { Container,Button } from './styles';
+import { Container } from './styles';
 
 export const Header = ({openAddTransactionModal}) => {
     return (
@@ -11,13 +11,7 @@ export const Header = ({openAddTransactionModal}) => {
                     
                     <button onClick={openAddTransactionModal}>Add transaction</button>
                 </nav>
-            </header>
-
-        
-                {/* <Button type='gain' onClick={openAddTransactionModal}>teste</Button>
-                <Button type='loss' onClick={openAddTransactionModal}>teste</Button> */}
-            
-            
+            </header>   
         </Container>
     )
 }

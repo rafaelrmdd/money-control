@@ -9,15 +9,15 @@ export const GlobalStyle = createGlobalStyle`
 
     :root {
         //background
-        --yellow-200: #f5f5dc;
+        --yellow-200: #F8F9FA ;
         //details
-        --orange-100: #F0A500;
+        --orange-100: #2C3E50;
         //warning
         --peach-100: #ff9c73;
         //gain
-        --green-50: #4CAF50;
+        --green-50: #34A853;
         //lose
-        --red-100: #ff4545;
+        --red-100: #E53E3E;
         //border
         --gray-100: #333;
     }

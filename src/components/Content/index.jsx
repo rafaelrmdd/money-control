@@ -1,45 +1,56 @@
 import { Container } from './styles';
-import { useState, useEffect, useContext } from 'react';
-import { TransactionContext } from '../../App';
+import { FaRegTrashAlt } from "react-icons/fa";
+import { supabase } from '../../api/transactions';
+import { GoArrowDown, GoArrowUp } from "react-icons/go";
 
-export const Content = ({ formData, transactions}) => {
-    const { setTransactions } = useContext(TransactionContext);
-    const [error, setError] = useState(null);
+export const Content = ({ transactions}) => {
+
+    const handleDelete = async (transaction) => {
+       console.log('teste', transaction.id);
+
+       const { error } = await supabase
+        .from('transactions')
+        .delete()
+        .eq('id', transaction.id);
+
+        if (error) {
+            console.log("handleDelete: ", error);
+        };
+    
+    };
+
+    //Formate to Real
+    const brlFormat = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        maximumFractionDigits: 2
+    })
+
+    //Format to Brasilia's time (UTC-3)
+    const brtFormat = Intl.DateTimeFormat('pt-BR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
 
     return(
         <Container>
             <main>
-                <div className="gain">
-                    <div className="text">
-                        <h2 id='name-text'>Name: Lorem ipsum dolor sit.</h2>
-                        <h3 id='reason-text'>Reason: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus necessitatibus exercitationem corrupti recusandae error libero culpa cumque vitae blanditiis veritatis.</h3>
-                    </div>
-
-                    <div className="value">
-                        <h2>R$90.00</h2>
-                    </div>
-                </div>
-
-                <div className="loss">
-                    <div className="text">
-                        <h2 id='name-text'>Name: Carro</h2>
-                        <h3 id='reason-text'>Reason: Comprei porque quis</h3>
-                    </div>
-
-                    <div className="value">
-                        <h2>R$90.00</h2>
-                    </div>
-                </div>
-
                 {transactions.map((transaction) => (
                     <div key={transaction.id} className={transaction.type === true ? 'gain' : 'loss'}>
+                        {transaction.type === true ? <GoArrowUp /> : <GoArrowDown />}
                         <div className="text">
                             <h2 id='name-text'>{transaction.name}</h2>
                             <h3 id='reason-text'>{transaction.reason}</h3>
                         </div>
 
-                        <div className="value">
-                            <h2>{transaction.value}</h2>
+                        <div className="value-and-date">
+                            <h2>{brlFormat.format(transaction.value)}</h2>
+                            <h3>{brtFormat.format(new Date(transaction.created_at))}</h3>
+                        </div>
+
+                        <div className="icons">
+                            <FaRegTrashAlt onClick={() => handleDelete(transaction)}/>
                         </div>
                     </div>
                 ))}

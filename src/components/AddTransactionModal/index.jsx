@@ -1,24 +1,24 @@
-import Modal from "react-modal"
-import { Container } from "./styles"
-import { set, useForm } from "react-hook-form"
-import { supabase  } from "../../api/transactions"
-import { useContext, useEffect, useState } from "react"
-import { TransactionContext } from "../../App"
+import { Container } from "./styles";
+import { useForm } from "react-hook-form";
+import { supabase  } from "../../api/transactions";
+import { useContext, useEffect, useState } from "react";
+import { TransactionContext } from "../../App";
+import Modal from "react-modal";
 
-export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransactionModal, formData}) => {
+export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransactionModal }) => {
 
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
-    const [type, setType] = useState('');
-    const { setFormData } = useContext(TransactionContext)
-        
+    const { setFormData } = useContext(TransactionContext);
     const { transactions, setTransactions } = useContext(TransactionContext);
     const { error, setError } = useContext(TransactionContext);
+
+    const [type, setType] = useState('');
 
     const onSubmit = (data) => {
         setFormData(data)
 
         postTransactionData(data)
-    }
+    };
 
     useEffect(() => {
         const fetchTransactionsData = async () => {
@@ -27,19 +27,17 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
                 .select('*')
             
             if(error){
-                setError(errors)
-                console.log(error)
+                setError(errors);
+                console.log(error);
             }
 
             if(transactions){
-                setTransactions(data)
+                setTransactions(data);
             }
-
         }
-
         fetchTransactionsData();
-        
-    }, [transactions, setTransactions, error, setError])
+
+    }, [transactions, setTransactions, error, setError]);
 
     const postTransactionData = async (transaction) => {
         const { data, errors } = await supabase
@@ -52,9 +50,17 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
                     type: transaction.type === 'gain'
                 }
             ])
-            .select()
+            .select();
 
-    }
+            if (errors) {
+                setError(errors);
+                console.log("An error ocurred: ", error);
+            };
+
+            if (transactions) {
+                console.log("postTransactionData: ", transactions)
+            };
+    };
 
     return (
         <Modal 
@@ -97,4 +103,4 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
             </Container>
         </Modal>
     )
-}
+};

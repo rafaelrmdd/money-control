@@ -35,9 +35,17 @@ export const Container = styled.div`
             }
 
             button{
-                padding: 0.25rem;
-                border-radius: 4px;
+                padding: 0.5rem 1rem;
+                border: 1px solid transparent;
+                border-radius: 6px;
+                background: #2C3E50;
+                color: #FFFFFF;
+                font-weight: 500;
+                font-size: 14px;
                 
+                &:hover {
+                    filter: brightness(90%);
+                }
             }
 
         }
