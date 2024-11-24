@@ -22,13 +22,13 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
 
     useEffect(() => {
         const fetchTransactionsData = async () => {
-            const { data, errors} = await supabase
+            const { data, errors } = await supabase
                 .from('transactions')
                 .select('*')
             
             if(error){
                 setError(errors);
-                console.log(error);
+                console.log("An error ocurred: ", error);
             }
 
             if(transactions){

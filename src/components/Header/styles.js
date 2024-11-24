@@ -7,47 +7,33 @@ export const Container = styled.div`
     background: var(--yellow-200);
 
     header{
-        width: calc(25%);
+        width: 70%;
         height: 3rem;
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0;
 
         background: transparent;
 
-        nav{
-            width: 100%;
-            height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        span, button{
+            margin-bottom: -10px;
+        }
 
-            span, .vertical-line, button{
-                margin-bottom: -10px;
-            }
+        button{
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            background: #2C3E50;
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 14px;
             
-            .vertical-line{
-                width: 5px;
-                height: 75%;
-            
-                border-left: 1px solid var(--gray-100);
-                filter: blur(0.8px);
+            &:hover {
+                filter: brightness(90%);
             }
-
-            button{
-                padding: 0.5rem 1rem;
-                border: 1px solid transparent;
-                border-radius: 6px;
-                background: #2C3E50;
-                color: #FFFFFF;
-                font-weight: 500;
-                font-size: 14px;
-                
-                &:hover {
-                    filter: brightness(90%);
-                }
-            }
-
         }
     }
 

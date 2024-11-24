@@ -2,6 +2,7 @@ import { Container } from './styles';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { supabase } from '../../api/transactions';
 import { GoArrowDown, GoArrowUp } from "react-icons/go";
+import { Card } from '../Card'; 
 
 export const Content = ({ transactions}) => {
 
@@ -31,10 +32,12 @@ export const Content = ({ transactions}) => {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
-      });
+    });
 
     return(
         <Container>
+            <Card/>
+
             <main>
                 {transactions.map((transaction) => (
                     <div key={transaction.id} className={transaction.type === true ? 'gain' : 'loss'}>
