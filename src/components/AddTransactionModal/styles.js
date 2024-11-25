@@ -6,7 +6,7 @@ export const Container = styled.form`
         margin-bottom: 2rem;
     }
 
-    input{
+    input {
         display: block;
         margin-bottom: 1rem;
         width: 100%;
@@ -17,24 +17,24 @@ export const Container = styled.form`
         padding: 1rem;
     }
 
-    button:last-child{
+    button:last-child {
         width: 100%;
         height: 3rem;
     }
 
-    .gain-or-loss{
+    .gain-or-loss {
         display: flex;
         margin-bottom: 1rem;
         justify-content: space-between;
 
-        div{
+        div {
             width: 45%;
             text-align: center;
             transition: 0.5s;
         
 
             &:first-child{
-                background: var(--green-50);
+                background: var(--green-100);
             }
 
             &:last-child{
@@ -48,10 +48,10 @@ export const Container = styled.form`
         }
     }
 
-    #value-error-message{
+    #value-error-message {
         color: red;
         position: relative;
         top: -18px;
-        font-size: 12px ;
+        font-size: 12px;
     }
 `

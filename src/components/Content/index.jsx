@@ -7,8 +7,6 @@ import { Card } from '../Card';
 export const Content = ({ transactions}) => {
 
     const handleDelete = async (transaction) => {
-       console.log('teste', transaction.id);
-
        const { error } = await supabase
         .from('transactions')
         .delete()
@@ -25,7 +23,7 @@ export const Content = ({ transactions}) => {
         style: 'currency',
         currency: 'BRL',
         maximumFractionDigits: 2
-    })
+    });
 
     //Format to Brasilia's time (UTC-3)
     const brtFormat = Intl.DateTimeFormat('pt-BR', {
@@ -36,7 +34,7 @@ export const Content = ({ transactions}) => {
 
     return(
         <Container>
-            <Card/>
+            <Card transactions={transactions}/>
 
             <main>
                 {transactions.map((transaction) => (
@@ -59,5 +57,5 @@ export const Content = ({ transactions}) => {
                 ))}
             </main>
         </Container>
-    )
-}
+    );
+};

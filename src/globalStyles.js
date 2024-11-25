@@ -9,13 +9,11 @@ export const GlobalStyle = createGlobalStyle`
 
     :root {
         //background
-        --yellow-200: #F8F9FA ;
+        --white-200: #F8F9FA ;
         //details
         --orange-100: #2C3E50;
-        //warning
-        --peach-100: #ff9c73;
         //gain
-        --green-50: #34A853;
+        --green-100: #34A853;
         //lose
         --red-100: #E53E3E;
         //border
@@ -26,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Poppins", sans-serif;
     }
 
-    input, button{
+    input, button {
         font-family: "Poppins", sans-serif;
     }
 
@@ -34,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
-    .react-modal-overlay{
+    .react-modal-overlay {
         background: rgba(0, 0, 0, 0.5);
 
         position: fixed;
@@ -48,14 +46,13 @@ export const GlobalStyle = createGlobalStyle`
         justify-content: center;
     }
 
-    .react-modal-content{
+    .react-modal-content {
         width: 100%;
         max-width: 600px;
         background: var(--peach-100);
         padding: 3rem;
         position: relative;
         border-radius: 4px;
-        
     }
 
 `

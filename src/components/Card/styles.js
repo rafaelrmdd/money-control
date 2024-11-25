@@ -8,22 +8,35 @@ export const Container = styled.div`
     justify-content: space-between;
     margin-bottom: 3rem;
 
-    .card-item-gains, .card-item-losses, .card-item-total {
+    .card-item-gains, .card-item-losses, .card-item-total,
+    .card-item-total-positive, .card-item-total-negative {
         width: 30%;
         border-radius: 8px;
         padding: 1rem;
     } 
 
     .card-item-gains {
-        background: var(--green-50);
+        background: var(--green-100);
     }
 
     .card-item-losses {
         background: var(--red-100);
     }
 
-    .card-item-total {
-        background: #333;
+    .card-item-total, .card-item-total-positive, .card-item-total-negative {
+        background: var(--orange-100);
+    }
+
+    .card-item-total-positive {
+        h2 {
+            color: var(--green-100);
+        }
+    }
+
+    .card-item-total-negative {
+        h2 {
+            color: var(--red-100);
+        }
     }
 
 `

@@ -10,37 +10,41 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
     const { setFormData } = useContext(TransactionContext);
     const { transactions, setTransactions } = useContext(TransactionContext);
-    const { error, setError } = useContext(TransactionContext);
 
     const [type, setType] = useState('');
 
     const onSubmit = (data) => {
-        setFormData(data)
+        setFormData(data);
+        postTransactionData(data);
 
-        postTransactionData(data)
+        setValue('name', '');
+        setValue('reason', '');
+        setValue('value', '');
+        setValue('type', '');
+        setType('')
+
+        closeAddTransactionModal();
     };
 
     useEffect(() => {
         const fetchTransactionsData = async () => {
-            const { data, errors } = await supabase
+            const { data, error } = await supabase
                 .from('transactions')
-                .select('*')
+                .select('*');
             
             if(error){
-                setError(errors);
-                console.log("An error ocurred: ", error);
-            }
+                console.log("postTransactionData Error ", error);
+                return;
+            };
 
-            if(transactions){
-                setTransactions(data);
-            }
+            setTransactions(data)
         }
         fetchTransactionsData();
 
-    }, [transactions, setTransactions, error, setError]);
+    }, [transactions, setTransactions]);
 
     const postTransactionData = async (transaction) => {
-        const { data, errors } = await supabase
+        const { data, error } = await supabase
             .from('transactions')
             .insert([
                 {
@@ -53,13 +57,11 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
             .select();
 
             if (errors) {
-                setError(errors);
-                console.log("An error ocurred: ", error);
+                console.log("postTransactionData Error: ", error);
+                return;
             };
 
-            if (transactions) {
-                console.log("postTransactionData: ", transactions)
-            };
+            setTransactions(data);
     };
 
     return (
@@ -102,5 +104,5 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
                 <button type="submit">Submit</button>
             </Container>
         </Modal>
-    )
+    );
 };

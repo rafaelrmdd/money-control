@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 100%;
     min-height: calc(100vh - 6rem);
-    background: var(--yellow-200);
+    background: var(--white-100);
 
-    main{
+    main {
         width: 70%;
         min-height: calc(100vh - 6rem);
         margin: 0 auto;
@@ -21,11 +21,11 @@ export const Container = styled.div`
         }
 
         .gain {
-            svg:first-child{
+            svg:first-child {
                 font-size: 38px;
             }
 
-            background: var(--green-50);
+            background: var(--green-100);
             filter: brightness(90%);
 
             margin-bottom: 0.75rem;
@@ -38,7 +38,7 @@ export const Container = styled.div`
         }
 
         .loss {
-            svg:first-child{
+            svg:first-child {
                 font-size: 38px;
             }
 
@@ -78,7 +78,7 @@ export const Container = styled.div`
             flex-direction: column;
             justify-content: space-between;
             
-            h2{
+            h2 {
                 margin-left: 5rem;
             }
 
@@ -99,7 +99,7 @@ export const Container = styled.div`
 
             svg:last-child {         
                 font-size: 22px;
-                color: gray;
+                color: var(--gray-100);
             
                 &:hover{
                     cursor: pointer;
