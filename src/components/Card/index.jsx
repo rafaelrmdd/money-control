@@ -7,9 +7,7 @@ export const Card = () => {
     
     const [transactionsTrue, setTransactionsTrue] = useState([]);
     const [transactionsFalse, setTransactionsFalse] = useState([]);
-
-    const [isPositive, setIsPositive] = useState(true);
-
+    
     const { transactions } = useContext(TransactionContext);
 
     useEffect(() => {
@@ -57,6 +55,10 @@ export const Card = () => {
     const totalLosses = transactionsFalse.reduce((sum, transaction) => sum + transaction.value, 0);
     const total = totalGains - totalLosses;
 
+    /*
+        This method will be used to define the class the cards
+        and change the style of it depending on which class it has 
+    */
     const getClassName = (total) => {
         if (total > 0) {
           return "card-item-total-positive";
@@ -81,11 +83,7 @@ export const Card = () => {
             =
             <div 
 
-            /*
-                If isPositive === true the name of the class will be "card-item-total-positive"
-                If isPositive === null the name of the class will be "card-item-total"
-                If isPositive === false the name of the class will be "card-item-total-negative"
-            */
+            
             className={getClassName(total)}>
                 <h1>Total</h1>
                 <h2>{brlFormat.format(total)}</h2>
