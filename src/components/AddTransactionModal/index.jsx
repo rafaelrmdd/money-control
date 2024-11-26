@@ -9,10 +9,13 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
 
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
     const { setFormData } = useContext(TransactionContext);
+
+    //State from 'App.jsx'
     const { transactions, setTransactions } = useContext(TransactionContext);
 
     const [type, setType] = useState('');
 
+    //When submit button is pressed
     const onSubmit = (data) => {
         setFormData(data);
         postTransactionData(data);
@@ -27,6 +30,7 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
     };
 
     useEffect(() => {
+        //Catch all the transactions in the database and set it into the state
         const fetchTransactionsData = async () => {
             const { data, error } = await supabase
                 .from('transactions')
@@ -44,6 +48,7 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
     }, [transactions, setTransactions]);
 
     const postTransactionData = async (transaction) => {
+        //Post the data into the database and set it into the state
         const { data, error } = await supabase
             .from('transactions')
             .insert([
@@ -68,6 +73,7 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
         <Modal 
             isOpen={isAddTransactionModalOpen}
             onRequestClose={closeAddTransactionModal}
+            //Customized class to style the modal
             overlayClassName='react-modal-overlay'
             className='react-modal-content'
         >
@@ -83,6 +89,7 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
 
                 <input type="text"
                     placeholder="Type" 
+                    id="gain-or-loss-input"
                     value={type}  
                     {...register("type", {required: "Field 'Type' is required" })} 
                     disabled
@@ -93,12 +100,12 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
                     <div onClick={() => {
                         setValue('type', 'gain')
                         setType('gain')
-                    }}>Gain</div>
+                    }}>gain</div>
 
                     <div onClick={() => {
                         setValue('type', 'loss')
                         setType('loss')
-                    }}>Loss</div>
+                    }}>loss</div>
                 </div>
 
                 <button type="submit">Submit</button>

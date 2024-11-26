@@ -24,7 +24,7 @@ export const Container = styled.div`
     }
 
     .card-item-total, .card-item-total-positive, .card-item-total-negative {
-        background: var(--orange-100);
+        background: var(--blue-300);
     }
 
     .card-item-total-positive {

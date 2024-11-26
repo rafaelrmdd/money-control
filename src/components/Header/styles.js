@@ -6,7 +6,7 @@ export const Container = styled.div`
 
     background: var(--yellow-200);
 
-    header{
+    header {
         width: 70%;
         height: 3rem;
         margin: 0 auto;
@@ -18,11 +18,16 @@ export const Container = styled.div`
         align-items: center;
         justify-content: space-between;
 
-        span, button{
+        span, button {
             margin-bottom: -10px;
         }
 
-        button{
+        span {
+            color: #FFD700;
+            font-size: 22px;
+        }
+
+        button {
             padding: 0.5rem 1rem;
             border: 1px solid transparent;
             border-radius: 6px;
@@ -37,20 +42,16 @@ export const Container = styled.div`
         }
     }
 
-    section{
+    section {
         width: 70%;
 
         display: flex;
         justify-content: space-between;
         margin: 1rem auto 0 auto;
-
-        
     }
-
 `
 
 export const Button = styled.button`
-  
     width: 40%;
     padding: 1rem;
     line-height: 1rem;
@@ -58,11 +59,9 @@ export const Button = styled.button`
     border: none;
     background: ${(props) => props.type === 'gain' ? 'var(--green-50)' : 'var(--red-100)'};
 
-    &:hover{
-        
+    &:hover {
         filter: brightness(90%);
     }
-
 `
 
 export const ModalStyle = createGlobalStyle`

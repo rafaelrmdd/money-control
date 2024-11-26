@@ -4,10 +4,9 @@ export const Header = ({openAddTransactionModal}) => {
     return (
         <Container>
             <header>                
-                <span>Logo</span>
-
+                <span>$</span>
                 <button onClick={openAddTransactionModal}>Add transaction</button>
             </header>   
         </Container>
-    )
-}
+    );
+};

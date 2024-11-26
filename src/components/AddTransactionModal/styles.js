@@ -17,6 +17,11 @@ export const Container = styled.form`
         padding: 1rem;
     }
 
+    #gain-or-loss-input {
+        font-style: italic;
+        font-weight: bold;
+    }
+
     button:last-child {
         width: 100%;
         height: 3rem;
@@ -31,6 +36,7 @@ export const Container = styled.form`
             width: 45%;
             text-align: center;
             transition: 0.5s;
+            border-radius: 8px;
         
 
             &:first-child{

@@ -13,7 +13,7 @@ export const Container = styled.div`
 
         border-radius: 20px 20px 0 0 ;
 
-        background: var(--orange-100);
+        background: var(--blue-300);
 
         .gain, .loss {
             padding: 1rem;
