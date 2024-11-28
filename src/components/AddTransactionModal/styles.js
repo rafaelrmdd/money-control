@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//Some of the modal style is in the 'globalStyles.js' file
+
 export const Container = styled.form`
 
     h2 {

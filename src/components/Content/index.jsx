@@ -6,6 +6,7 @@ import { Card } from '../Card';
 
 export const Content = ({ transactions}) => {
 
+    //Delete on click method that receives the 'transaction' object from the map method
     const handleDelete = async (transaction) => {
        const { error } = await supabase
         .from('transactions')

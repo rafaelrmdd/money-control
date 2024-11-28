@@ -24,7 +24,7 @@ export const Container = styled.div`
 
         span {
             color: #FFD700;
-            font-size: 22px;
+            font-size: 22px;    
         }
 
         button {
