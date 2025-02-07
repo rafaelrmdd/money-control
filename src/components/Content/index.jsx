@@ -1,6 +1,6 @@
 import { Container } from './styles';
 import { FaRegTrashAlt } from "react-icons/fa";
-import { supabase } from '../../api/transactions';
+import { supabase } from '../../services/api/transactions';
 import { GoArrowDown, GoArrowUp } from "react-icons/go";
 import { Card } from '../Card'; 
 
@@ -15,8 +15,7 @@ export const Content = ({ transactions}) => {
 
         if (error) {
             console.log("handleDelete: ", error);
-        };
-    
+        };   
     };
 
     //Formate to Real

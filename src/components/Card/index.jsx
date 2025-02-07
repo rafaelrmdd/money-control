@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
-import { supabase } from "../../api/transactions";
+import { supabase } from "../../services/api/transactions";
 import { Container } from "./styles";
-import { TransactionContext } from "../../App";
+import { TransactionContext } from "../TransactionsContext";
 
 export const Card = () => {
     

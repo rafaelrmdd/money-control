@@ -1,13 +1,13 @@
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
-import { supabase  } from "../../api/transactions";
+import { supabase  } from "../../services/api/transactions";
 import { useContext, useEffect, useState } from "react";
-import { TransactionContext } from "../../App";
+import { TransactionContext } from "../TransactionsContext"
 import Modal from "react-modal";
 
 export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransactionModal }) => {
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+    const { register, handleSubmit, setValue, formState: { errors }, reset} = useForm();
     const { setFormData } = useContext(TransactionContext);
 
     //State from 'App.jsx'
@@ -20,11 +20,13 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
         setFormData(data);
         postTransactionData(data);
 
-        setValue('name', '');
-        setValue('reason', '');
-        setValue('value', '');
-        setValue('type', '');
-        setType('')
+        // setValue('name', '');
+        // setValue('reason', '');
+        // setValue('value', '');
+        // setValue('type', '');
+        // setType('')
+
+        reset()
 
         closeAddTransactionModal();
     };
@@ -40,12 +42,11 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
                 console.log("postTransactionData Error ", error);
                 return;
             };
-
-            setTransactions(data)
+            console.log('transactions: ', transactions)
         }
-        fetchTransactionsData();
 
-    }, [transactions, setTransactions]);
+        setTimeout(fetchTransactionsData, 5000)
+    });
 
     const postTransactionData = async (transaction) => {
         //Post the data into the database and set it into the state

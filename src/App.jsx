@@ -4,9 +4,7 @@ import { Content } from './components/Content/index'  ;
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { AddTransactionModal } from './components/AddTransactionModal';
-import { createContext } from 'react';
-
-export const TransactionContext = createContext();
+import { TransactionsContextProvider } from './components/TransactionsContext';
 
 function App() {
   Modal.setAppElement('#root');
@@ -20,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <TransactionContext.Provider 
+      <TransactionsContextProvider
         value={{formData, setFormData, transactions, setTransactions, error, setError}}
       >
         <GlobalStyle />
@@ -31,7 +29,7 @@ function App() {
           closeAddTransactionModal={closeAddTransactionModal}
           formData={formData}
         />
-      </TransactionContext.Provider>
+      </TransactionsContextProvider>
     </div>
   );
 };
