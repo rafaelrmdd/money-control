@@ -1,9 +1,10 @@
+import Modal from "react-modal";
+
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { supabase  } from "../../services/api/transactions";
 import { useContext, useState } from "react";
 import { TransactionContext } from "../TransactionsContext"
-import Modal from "react-modal";
 
 export const AddTransactionModal = () => {
 

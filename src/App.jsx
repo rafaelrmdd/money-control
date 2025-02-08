@@ -9,7 +9,6 @@ import { TransactionsContextProvider } from './components/TransactionsContext';
 function App() {
   Modal.setAppElement('#root');
 
-
   return (
     <div className="App">
       <TransactionsContextProvider>
