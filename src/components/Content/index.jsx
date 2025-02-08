@@ -3,11 +3,15 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { supabase } from '../../services/api/transactions';
 import { GoArrowDown, GoArrowUp } from "react-icons/go";
 import { Card } from '../Card'; 
+import { useContext } from 'react';
+import { TransactionContext } from '../TransactionsContext';
 
-export const Content = ({ transactions}) => {
+export const Content = () => {
+
+    const { transactions } = useContext(TransactionContext)
 
     //Delete on click method that receives the 'transaction' object from the map method
-    const handleDelete = async (transaction) => {
+    const handleDeleteTransaction = async (transaction) => {
        const { error } = await supabase
         .from('transactions')
         .delete()
@@ -51,7 +55,7 @@ export const Content = ({ transactions}) => {
                         </div>
 
                         <div className="icons">
-                            <FaRegTrashAlt onClick={() => handleDelete(transaction)}/>
+                            <FaRegTrashAlt onClick={() => handleDeleteTransaction(transaction)}/>
                         </div>
                     </div>
                 ))}

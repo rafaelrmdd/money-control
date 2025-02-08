@@ -1,56 +1,30 @@
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { supabase  } from "../../services/api/transactions";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { TransactionContext } from "../TransactionsContext"
 import Modal from "react-modal";
 
-export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransactionModal }) => {
+export const AddTransactionModal = () => {
 
-    const { register, handleSubmit, setValue, formState: { errors }, reset} = useForm();
-    const { setFormData } = useContext(TransactionContext);
-
-    //State from 'App.jsx'
-    const { transactions, setTransactions } = useContext(TransactionContext);
+    const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm();
+    const { isAddTransactionModalOpen, handleCloseAddTransactionModal } = useContext(TransactionContext)
 
     const [type, setType] = useState('');
 
     //When submit button is pressed
     const onSubmit = (data) => {
-        setFormData(data);
-        postTransactionData(data);
+        handleAddTransaction(data);
 
-        // setValue('name', '');
-        // setValue('reason', '');
-        // setValue('value', '');
-        // setValue('type', '');
-        // setType('')
+        setValue('type', '');
+        setType('')
 
         reset()
-
-        closeAddTransactionModal();
+        handleCloseAddTransactionModal();
     };
 
-    useEffect(() => {
-        //Catch all the transactions in the database and set it into the state
-        const fetchTransactionsData = async () => {
-            const { data, error } = await supabase
-                .from('transactions')
-                .select('*');
-            
-            if(error){
-                console.log("postTransactionData Error ", error);
-                return;
-            };
-            console.log('transactions: ', transactions)
-        }
-
-        setTimeout(fetchTransactionsData, 5000)
-    });
-
-    const postTransactionData = async (transaction) => {
-        //Post the data into the database and set it into the state
-        const { data, error } = await supabase
+    const handleAddTransaction = async (transaction) => {
+        const { error } = await supabase
             .from('transactions')
             .insert([
                 {
@@ -62,19 +36,16 @@ export const AddTransactionModal = ({isAddTransactionModalOpen, closeAddTransact
             ])
             .select();
 
-            if (errors) {
-                console.log("postTransactionData Error: ", error);
+            if (error) {
+                console.log("handleAddTransaction error: ", error);
                 return;
             };
-
-            setTransactions(data);
     };
 
     return (
         <Modal 
             isOpen={isAddTransactionModalOpen}
-            onRequestClose={closeAddTransactionModal}
-            //Customized class to style the modal
+            onRequestClose={handleCloseAddTransactionModal}
             overlayClassName='react-modal-overlay'
             className='react-modal-content'
         >

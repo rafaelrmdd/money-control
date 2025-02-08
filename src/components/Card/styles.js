@@ -8,7 +8,7 @@ export const Container = styled.div`
     justify-content: space-between;
     margin-bottom: 3rem;
 
-    .card-item-gains, .card-item-losses, .card-item-total,
+    .card-item-gains, .card-item-losses, .card-item-total-neutral,
     .card-item-total-positive, .card-item-total-negative {
         width: 30%;
         border-radius: 8px;
@@ -23,7 +23,7 @@ export const Container = styled.div`
         background: var(--red-100);
     }
 
-    .card-item-total, .card-item-total-positive, .card-item-total-negative {
+    .card-item-total-neutral, .card-item-total-positive, .card-item-total-negative {
         background: var(--blue-300);
     }
 
